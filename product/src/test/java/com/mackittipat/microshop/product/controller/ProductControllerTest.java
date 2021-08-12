@@ -33,6 +33,7 @@ class ProductControllerTest {
     List<Product> productList =
         Arrays.asList(
             Product.builder()
+                .id(1)
                 .name("Product1")
                 .price(new BigDecimal("100.00"))
                 .quantity(10)
@@ -55,6 +56,7 @@ class ProductControllerTest {
   void findById() throws Exception {
     Product product =
         Product.builder()
+            .id(1)
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
@@ -75,6 +77,7 @@ class ProductControllerTest {
   void create() throws Exception {
     Product product =
         Product.builder()
+            .id(1)
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
@@ -95,6 +98,7 @@ class ProductControllerTest {
   void update() throws Exception {
     Product product =
         Product.builder()
+            .id(1)
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
