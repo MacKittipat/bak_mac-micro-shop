@@ -25,6 +25,8 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public CategorySearchResult search(CategorySearchForm categorySearchForm) {
+    categorySearchForm.setOffset((categorySearchForm.getPage() * pageSize) - pageSize);
+
     CategorySearchResult categorySearchResult = new CategorySearchResult();
     categorySearchResult.setCategoryList(categoryMapper.search(categorySearchForm));
     categorySearchResult.setTotalSize(categoryMapper.count(categorySearchForm));
