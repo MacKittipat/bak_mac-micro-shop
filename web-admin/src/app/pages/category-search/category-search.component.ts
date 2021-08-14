@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {CategoryService} from "../../services/category.service";
+import {CategorySearchResult} from "../../dto/category-search-result";
+import {CategorySearchForm} from "../../dto/category-search-form";
 
 @Component({
   selector: 'app-category-search',
@@ -8,11 +11,18 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CategorySearchComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) {
+  displayedColumns: string[] = ['id', 'name', 'createdDate'];
+  categorySearchResult: any;
+
+  constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
-
+    let searchForm = {page: 1}
+    this.categoryService.search(searchForm).subscribe(searchResult => {
+      console.log(searchResult);
+      this.categorySearchResult = searchResult
+    });
   }
 
 }
