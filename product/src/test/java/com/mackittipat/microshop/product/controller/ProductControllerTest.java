@@ -1,8 +1,8 @@
 package com.mackittipat.microshop.product.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mackittipat.microshop.product.model.Category;
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Category;
+import com.mackittipat.microshop.product.entity.Product;
 import com.mackittipat.microshop.product.service.ProductService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;

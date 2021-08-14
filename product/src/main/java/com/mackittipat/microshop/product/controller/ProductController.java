@@ -1,6 +1,6 @@
 package com.mackittipat.microshop.product.controller;
 
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Product;
 import com.mackittipat.microshop.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

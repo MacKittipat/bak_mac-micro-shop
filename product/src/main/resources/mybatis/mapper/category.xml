@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mackittipat.microshop.product.mapper.CategoryMapper">
+
+    <select id="search" parameterType="CategorySearchForm" resultType="map">
+        SELECT id, uuid, name, created_date as createdDate
+        FROM category
+        ORDER BY id DESC
+        LIMIT 2 OFFSET #{page}
+    </select>
+
+    <select id="count" parameterType="CategorySearchForm" resultType="long">
+        SELECT COUNT(id)
+        FROM category
+    </select>
+
+</mapper>

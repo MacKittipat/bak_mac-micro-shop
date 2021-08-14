@@ -1,6 +1,7 @@
 package com.mackittipat.microshop.product.mapper;
 
-import com.mackittipat.microshop.product.model.Category;
+import com.mackittipat.microshop.product.dto.CategorySearchForm;
+import com.mackittipat.microshop.product.entity.Category;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -14,6 +15,10 @@ public interface CategoryMapper {
 
   @Select("SELECT id, uuid, name, created_date as createdDate FROM category ORDER BY id DESC")
   List<Category> findAll();
+
+  List<Category> search(CategorySearchForm categorySearchForm);
+
+  long count(CategorySearchForm categorySearchForm);
 
   @Select("SELECT id, uuid, name, created_date as createdDate FROM category WHERE id=#{id}")
   Category findById(long id);

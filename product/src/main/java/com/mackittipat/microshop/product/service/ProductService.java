@@ -1,6 +1,6 @@
 package com.mackittipat.microshop.product.service;
 
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Product;
 
 import java.util.List;
 

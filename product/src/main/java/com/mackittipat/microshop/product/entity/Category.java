@@ -1,4 +1,4 @@
-package com.mackittipat.microshop.product.model;
+package com.mackittipat.microshop.product.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

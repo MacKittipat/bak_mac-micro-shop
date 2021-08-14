@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <typeAliases>
+        <typeAlias alias="Category" type="com.mackittipat.microshop.product.entity.Category"/>
+        <typeAlias alias="CategorySearchForm" type="com.mackittipat.microshop.product.dto.CategorySearchForm"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mybatis/mapper/category.xml"/>
+    </mappers>
+
+</configuration>

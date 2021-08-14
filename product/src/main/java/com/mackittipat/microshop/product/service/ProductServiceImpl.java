@@ -1,7 +1,7 @@
 package com.mackittipat.microshop.product.service;
 
 import com.mackittipat.microshop.product.mapper.ProductMapper;
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,11 @@
 package com.mackittipat.microshop.product.service;
 
+import com.mackittipat.microshop.product.dto.CategorySearchForm;
+import com.mackittipat.microshop.product.dto.CategorySearchResult;
+import com.mackittipat.microshop.product.entity.Category;
 import com.mackittipat.microshop.product.mapper.CategoryMapper;
-import com.mackittipat.microshop.product.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +15,21 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Autowired private CategoryMapper categoryMapper;
 
+  @Value("${app.pagination.page.size}")
+  private int pageSize;
+
   @Override
   public List<Category> findAll() {
     return categoryMapper.findAll();
+  }
+
+  @Override
+  public CategorySearchResult search(CategorySearchForm categorySearchForm) {
+    CategorySearchResult categorySearchResult = new CategorySearchResult();
+    categorySearchResult.setCategoryList(categoryMapper.search(categorySearchForm));
+    categorySearchResult.setTotalSize(categoryMapper.count(categorySearchForm));
+    categorySearchResult.setTotalPage((categorySearchResult.getTotalSize() / pageSize) + 1);
+    return categorySearchResult;
   }
 
   @Override

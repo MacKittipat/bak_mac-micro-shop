@@ -1,8 +1,8 @@
 package com.mackittipat.microshop.product.service;
 
 import com.mackittipat.microshop.product.mapper.ProductMapper;
-import com.mackittipat.microshop.product.model.Category;
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Category;
+import com.mackittipat.microshop.product.entity.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

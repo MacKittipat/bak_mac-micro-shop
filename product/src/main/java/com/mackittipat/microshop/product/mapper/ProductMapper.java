@@ -1,6 +1,6 @@
 package com.mackittipat.microshop.product.mapper;
 
-import com.mackittipat.microshop.product.model.Product;
+import com.mackittipat.microshop.product.entity.Product;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
