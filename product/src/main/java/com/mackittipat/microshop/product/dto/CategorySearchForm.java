@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CategorySearchForm {
-  private int page;
+  private int page = 1;
   private int offset;
   private String name;
 }
