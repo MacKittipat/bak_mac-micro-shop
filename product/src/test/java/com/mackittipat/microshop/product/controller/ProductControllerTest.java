@@ -29,7 +29,7 @@ class ProductControllerTest {
   @MockBean private ProductService productService;
 
   @Test
-  void findAll() throws Exception {
+  public void findAll() throws Exception {
     List<Product> productList =
         Arrays.asList(
             Product.builder()
@@ -53,7 +53,7 @@ class ProductControllerTest {
   }
 
   @Test
-  void findById() throws Exception {
+  public void findById() throws Exception {
     Product product =
         Product.builder()
             .id(1)
@@ -74,7 +74,7 @@ class ProductControllerTest {
   }
 
   @Test
-  void create() throws Exception {
+  public void create() throws Exception {
     Product product =
         Product.builder()
             .id(1)
@@ -95,7 +95,7 @@ class ProductControllerTest {
   }
 
   @Test
-  void update() throws Exception {
+  public void update() throws Exception {
     Product product =
         Product.builder()
             .id(1)

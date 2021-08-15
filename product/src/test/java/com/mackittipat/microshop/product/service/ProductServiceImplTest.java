@@ -23,7 +23,7 @@ class ProductServiceImplTest {
   @Mock private ProductMapper productMapper;
 
   @Test
-  void findAll() {
+  public void findAll() {
     List<Product> productList =
         Arrays.asList(
             Product.builder()
@@ -44,7 +44,7 @@ class ProductServiceImplTest {
   }
 
   @Test
-  void findById() {
+  public void findById() {
     Product product =
         Product.builder()
             .id(1)
@@ -63,7 +63,7 @@ class ProductServiceImplTest {
   }
 
   @Test
-  void create() {
+  public void create() {
     Product product =
         Product.builder()
             .id(1)
@@ -78,7 +78,7 @@ class ProductServiceImplTest {
   }
 
   @Test
-  void update() {
+  public void update() {
     Product product =
         Product.builder()
             .id(1)

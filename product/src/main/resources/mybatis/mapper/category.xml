@@ -10,7 +10,7 @@
         FROM category
         WHERE 1=1
         <if test="name != null">
-            <bind name="namePattern" value="name + '%'" />
+            <bind name="namePattern" value="name + '%'"/>
             AND LOWER(name) like LOWER(#{namePattern})
         </if>
         ORDER BY id DESC
@@ -21,9 +21,5 @@
         SELECT COUNT(id)
         FROM category
     </select>
-
-<!--    <resultMap id="searchResultMap" type="CategorySearchResult">-->
-<!--        <result column="created_datetime" property="createDateTime"/>-->
-<!--    </resultMap>-->
 
 </mapper>

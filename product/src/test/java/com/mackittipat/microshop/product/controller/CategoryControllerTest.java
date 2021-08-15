@@ -1,6 +1,7 @@
 package com.mackittipat.microshop.product.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mackittipat.microshop.product.dto.CategorySearchResult;
 import com.mackittipat.microshop.product.entity.Category;
 import com.mackittipat.microshop.product.service.CategoryService;
 import org.hamcrest.Matchers;
@@ -27,23 +28,26 @@ class CategoryControllerTest {
   @MockBean private CategoryService categoryService;
 
   @Test
-  void findAll() throws Exception {
+  public void search() throws Exception {
+    CategorySearchResult categorySearchResult = new CategorySearchResult();
     List<Category> categoryList = Arrays.asList(Category.builder().id(1).name("Category1").build());
+    categorySearchResult.setCategoryList(categoryList);
 
-    Mockito.when(categoryService.findAll()).thenReturn(categoryList);
+    Mockito.when(categoryService.search(Mockito.any())).thenReturn(categorySearchResult);
 
     mockMvc
         .perform(MockMvcRequestBuilders.get("/categories").contentType(MediaType.APPLICATION_JSON))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.categories", Matchers.hasSize(1)))
         .andExpect(
-            MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(categoryList)));
+            MockMvcResultMatchers.content()
+                .json(objectMapper.writeValueAsString(categorySearchResult)));
 
-    Mockito.verify(categoryService, Mockito.times(1)).findAll();
+    Mockito.verify(categoryService, Mockito.times(1)).search(Mockito.any());
   }
 
   @Test
-  void findById() throws Exception {
+  public void findById() throws Exception {
     Category category = Category.builder().id(1).name("Category1").build();
 
     Mockito.when(categoryService.findById(Mockito.anyLong())).thenReturn(category);
@@ -58,7 +62,7 @@ class CategoryControllerTest {
   }
 
   @Test
-  void create() throws Exception {
+  public void create() throws Exception {
     Category category = Category.builder().name("Category1").build();
 
     mockMvc
@@ -72,15 +76,15 @@ class CategoryControllerTest {
   }
 
   @Test
-  void update() throws Exception {
+  public void update() throws Exception {
     Category category = Category.builder().name("Category1").build();
 
     mockMvc
-            .perform(
-                    MockMvcRequestBuilders.put("/categories")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(objectMapper.writeValueAsString(category)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        .perform(
+            MockMvcRequestBuilders.put("/categories")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(category)))
+        .andExpect(MockMvcResultMatchers.status().isOk());
 
     Mockito.verify(categoryService, Mockito.times(1)).update(Mockito.any());
   }
