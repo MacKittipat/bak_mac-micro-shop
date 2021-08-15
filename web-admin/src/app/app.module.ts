@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './pages/home/home.component';
 import {CategorySearchComponent} from './pages/category-search/category-search.component';
 import {HttpClientModule} from "@angular/common/http";
+import {NgbAccordionModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbPaginationModule,
+    NgbAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

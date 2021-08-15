@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {CategoryService} from "../../services/category.service";
+import {Category} from "../../dto/category";
 import {CategorySearchResult} from "../../dto/category-search-result";
-import {CategorySearchForm} from "../../dto/category-search-form";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-category-search',
@@ -11,18 +11,24 @@ import {CategorySearchForm} from "../../dto/category-search-form";
 })
 export class CategorySearchComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'createdDate'];
-  categorySearchResult: any;
+  categorySearchResult: CategorySearchResult;
+  page: number;
 
   constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit(): void {
-    let searchForm = {page: 1}
-    this.categoryService.search(searchForm).subscribe(searchResult => {
-      console.log(searchResult);
-      this.categorySearchResult = searchResult
-    });
+    this.page = 1;
+    this.searchCategory(this.page)
   }
 
+  onPageChanged(page): void {
+    this.searchCategory(page)
+  }
+
+  searchCategory(page) {
+    this.categoryService.search({page: page}).subscribe(categorySearchResult => {
+      this.categorySearchResult = categorySearchResult;
+    });
+  }
 }
