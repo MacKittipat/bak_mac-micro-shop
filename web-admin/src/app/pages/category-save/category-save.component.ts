@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../../services/category.service";
+import {Category} from "../../dto/category";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-category-save',
@@ -10,8 +12,9 @@ import {CategoryService} from "../../services/category.service";
 })
 export class CategorySaveComponent implements OnInit {
 
-  id: number;
+  id: string;
   action: string;
+  category: Category;
   categoryForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -26,18 +29,26 @@ export class CategorySaveComponent implements OnInit {
       name: ['', [Validators.required]]
     });
 
-    this.route.queryParams.subscribe(params => {
-      this.id = params['id'];
-    });
-
+    this.id = this.route.snapshot.paramMap.get('id');
     this.action = 'Create';
     if (this.id) {
-      this.action = 'Edit'
+      this.action = 'Edit';
+      this.categoryService.findById(Number(this.id)).subscribe(category => {
+        this.category = category;
+        this.categoryForm.setValue({
+          name: this.category.name
+        });
+      });
     }
   }
 
   onSubmit(): void {
-    this.categoryService.save(this.categoryForm.value).subscribe();
+    if (this.id) {
+      this.category.name = this.categoryForm.get('name').value;
+    } else {
+      this.category = this.categoryForm.value;
+    }
+    this.categoryService.save(this.category).subscribe();
     this.router.navigate(['/category']);
   }
 

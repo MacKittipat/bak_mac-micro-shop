@@ -30,7 +30,7 @@ class CategoryControllerTest {
   @Test
   public void search() throws Exception {
     CategorySearchResult categorySearchResult = new CategorySearchResult();
-    List<Category> categoryList = Arrays.asList(Category.builder().id(1).name("Category1").build());
+    List<Category> categoryList = Arrays.asList(Category.builder().id(1L).name("Category1").build());
     categorySearchResult.setCategoryList(categoryList);
 
     Mockito.when(categoryService.search(Mockito.any())).thenReturn(categorySearchResult);
@@ -48,7 +48,7 @@ class CategoryControllerTest {
 
   @Test
   public void findById() throws Exception {
-    Category category = Category.builder().id(1).name("Category1").build();
+    Category category = Category.builder().id(1L).name("Category1").build();
 
     Mockito.when(categoryService.findById(Mockito.anyLong())).thenReturn(category);
 

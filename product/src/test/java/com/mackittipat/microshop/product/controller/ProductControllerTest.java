@@ -37,7 +37,7 @@ class ProductControllerTest {
                 .name("Product1")
                 .price(new BigDecimal("100.00"))
                 .quantity(10)
-                .category(Category.builder().id(1).build())
+                .category(Category.builder().id(1L).build())
                 .build());
 
     Mockito.when(productService.findAll()).thenReturn(productList);
@@ -60,7 +60,7 @@ class ProductControllerTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     Mockito.when(productService.findById(Mockito.anyLong())).thenReturn(product);
@@ -81,7 +81,7 @@ class ProductControllerTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     mockMvc
@@ -102,7 +102,7 @@ class ProductControllerTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     mockMvc

@@ -31,7 +31,7 @@ class CategoryServiceImplTest {
 
   @Test
   public void findAll() {
-    List<Category> categoryList = Arrays.asList(Category.builder().id(1).name("Category1").build());
+    List<Category> categoryList = Arrays.asList(Category.builder().id(1L).name("Category1").build());
     Mockito.when(categoryMapper.findAll()).thenReturn(categoryList);
 
     List<Category> categoryResultList = categoryService.findAll();
@@ -46,7 +46,7 @@ class CategoryServiceImplTest {
     CategorySearchForm categorySearchForm = new CategorySearchForm();
     categorySearchForm.setPage(1);
 
-    List<Category> categoryList = Arrays.asList(Category.builder().id(1).name("Category1").build());
+    List<Category> categoryList = Arrays.asList(Category.builder().id(1L).name("Category1").build());
     Mockito.when(categoryMapper.search(Mockito.any())).thenReturn(categoryList);
     Mockito.when(categoryMapper.count(Mockito.any())).thenReturn(1L);
 
@@ -60,7 +60,7 @@ class CategoryServiceImplTest {
 
   @Test
   public void findById() {
-    Category category = Category.builder().id(1).name("Category1").build();
+    Category category = Category.builder().id(1L).name("Category1").build();
     Mockito.when(categoryMapper.findById(Mockito.anyLong())).thenReturn(category);
 
     Category categoryResult = categoryService.findById(1);
@@ -71,7 +71,7 @@ class CategoryServiceImplTest {
 
   @Test
   public void create() {
-    Category category = Category.builder().id(1).name("Category1").build();
+    Category category = Category.builder().id(1L).name("Category1").build();
     categoryService.create(category);
 
     Mockito.verify(categoryMapper, Mockito.times(1)).create(Mockito.any());
@@ -79,7 +79,7 @@ class CategoryServiceImplTest {
 
   @Test
   public void update() {
-    Category category = Category.builder().id(1).name("Category1").build();
+    Category category = Category.builder().id(1L).name("Category1").build();
     categoryService.update(category);
 
     Mockito.verify(categoryMapper, Mockito.times(1)).update(Mockito.any());

@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'category', component: CategorySearchComponent},
   {path: 'category/save', component: CategorySaveComponent},
+  {path: 'category/save/:id', component: CategorySaveComponent},
 ];
 
 @NgModule({

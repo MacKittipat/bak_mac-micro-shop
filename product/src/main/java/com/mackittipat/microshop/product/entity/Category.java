@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Category {
 
-  private long id;
+  private Long id;
   private String uuid = UUID.randomUUID().toString();
   private String name;
   private LocalDateTime createdDate = LocalDateTime.now();

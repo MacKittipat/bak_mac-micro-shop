@@ -31,7 +31,7 @@ class ProductServiceImplTest {
                 .name("Product1")
                 .price(new BigDecimal("100.00"))
                 .quantity(10)
-                .category(Category.builder().id(1).build())
+                .category(Category.builder().id(1L).build())
                 .build());
 
     Mockito.when(productMapper.findAll()).thenReturn(productList);
@@ -51,7 +51,7 @@ class ProductServiceImplTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     Mockito.when(productMapper.findById(Mockito.anyLong())).thenReturn(product);
@@ -70,7 +70,7 @@ class ProductServiceImplTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     productService.create(product);
@@ -85,7 +85,7 @@ class ProductServiceImplTest {
             .name("Product1")
             .price(new BigDecimal("100.00"))
             .quantity(10)
-            .category(Category.builder().id(1).build())
+            .category(Category.builder().id(1L).build())
             .build();
 
     productService.update(product);

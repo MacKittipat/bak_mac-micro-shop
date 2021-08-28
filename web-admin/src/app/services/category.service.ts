@@ -19,9 +19,18 @@ export class CategoryService {
       environment.url_product + 'categories?page=' + categorySearchForm.page);
   }
 
+  findById(id: number): Observable<Category> {
+    return this.httpClient.get<Category>(
+      environment.url_product + 'categories/' + id);
+  }
+
   save(category: Category): Observable<Category> {
-    console.log(category);
-    return this.httpClient.post<Category>(
-      environment.url_product + 'categories', category);
+    if(category.id) {
+      return this.httpClient.put<Category>(
+        environment.url_product + 'categories', category);
+    } else {
+      return this.httpClient.post<Category>(
+        environment.url_product + 'categories', category);
+    }
   }
 }

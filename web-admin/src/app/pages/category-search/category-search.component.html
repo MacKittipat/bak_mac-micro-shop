@@ -18,7 +18,9 @@
         </thead>
         <tbody>
         <tr *ngFor="let category of categorySearchResult?.categories">
-          <th scope="row">{{category.id}}</th>
+          <th scope="row">
+            <a [routerLink]="['/category/save', category.id]">{{category.id}}</a>
+          </th>
           <td>{{category.name}}</td>
           <td>{{category.createdDate}}</td>
         </tr>
