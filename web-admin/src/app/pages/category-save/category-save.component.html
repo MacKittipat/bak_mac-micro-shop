@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3>{{action}} Category</h3>
+    </div>
+  </div>
+
+  <form class="row" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="col-12  mb-2">
+      <label for="name" class="form-label">Name</label>
+      <span *ngIf="categoryForm.get('name').touched && categoryForm.get('name').errors?.required">
+        is required.
+      </span>
+      <input type="text" formControlName="name" class="form-control" id="name">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary float-right" [disabled]="!categoryForm.valid" type="submit">Save</button>
+    </div>
+  </form>
+
+</div>

@@ -7,17 +7,21 @@ import {HomeComponent} from './pages/home/home.component';
 import {CategorySearchComponent} from './pages/category-search/category-search.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NgbAccordionModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
+import {CategorySaveComponent} from './pages/category-save/category-save.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CategorySearchComponent
+    CategorySearchComponent,
+    CategorySaveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgbPaginationModule,
     NgbAccordionModule
   ],
