@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {Observable} from "rxjs";
 import {CategorySearchResult} from "../dto/category-search-result";
 import {Category} from "../dto/category";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
