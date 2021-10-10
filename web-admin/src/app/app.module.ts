@@ -9,6 +9,7 @@ import {NgbAccordionModule, NgbPaginationModule} from "@ng-bootstrap/ng-bootstra
 import {CategorySaveComponent} from './pages/category-save/category-save.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CategoryListComponent} from './pages/category-list/category-list.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {CategoryListComponent} from './pages/category-list/category-list.compone
     CategoryListComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
