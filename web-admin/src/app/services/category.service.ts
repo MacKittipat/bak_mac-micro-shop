@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {CategorySearchForm} from "../dto/category-search-form";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from '../../environments/environment';
 import {Observable} from "rxjs";
 import {CategorySearchResult} from "../dto/category-search-result";
 import {Category} from "../dto/category";
-import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,11 @@ export class CategoryService {
 
   search(categorySearchForm: CategorySearchForm): Observable<CategorySearchResult> {
     return this.httpClient.get<CategorySearchResult>(
-      environment.url_product + 'categories?page=' + categorySearchForm.page);
+      environment.url_product + 'categories', {
+        params: new HttpParams()
+          .set('page', categorySearchForm.page)
+          .set('name', categorySearchForm.name)
+      });
   }
 
   findById(id: number): Observable<Category> {
@@ -26,7 +29,7 @@ export class CategoryService {
   }
 
   save(category: Category): Observable<Category> {
-    if(category.id) {
+    if (category.id) {
       return this.httpClient.put<Category>(
         environment.url_product + 'categories', category);
     } else {
